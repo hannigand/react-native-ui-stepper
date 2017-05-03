@@ -1,0 +1,29 @@
+{
+  "name": "react-native-ui-stepper",
+  "version": "1.0.0",
+  "description": "A react-native implementation of the iOS UIStepper",
+  "main": "UIStepper.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hannigand/react-native-ui-stepper.git"
+  },
+  "keywords": [
+    "react-native",
+    "ios",
+    "android",
+    "stepper",
+    "ios-stepper",
+    "ui-stepper",
+    "UIStepper",
+    "uikit-stepper"
+  ],
+  "author": "Dan Hannigan",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/hannigand/react-native-ui-stepper/issues"
+  },
+  "homepage": "https://github.com/hannigand/react-native-ui-stepper#readme"
+}
