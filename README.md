@@ -1,5 +1,8 @@
 # react-native-ui-stepper
 
+[![npm version](http://img.shields.io/npm/v/react-native-ui-stepper.svg)](https://www.npmjs.com/package/react-native-ui-stepper)
+[![npm version](http://img.shields.io/npm/dm/react-native-ui-stepper.svg)](https://www.npmjs.com/package/react-native-ui-stepper)
+
 A react-native component which mirrors the functionality of [UIStepper](https://developer.apple.com/reference/uikit/uistepper) from iOS.
 
 > A stepper control provides a user interface for incrementing or decrementing a value. A stepper displays two buttons, one with a minus (“–”) symbol and one with a plus (“+”) symbol.
