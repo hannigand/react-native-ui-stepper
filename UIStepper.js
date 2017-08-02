@@ -35,6 +35,7 @@ class UIStepper extends Component {
     onIncrement: PropTypes.func,
     onMinimumReached: PropTypes.func,
     onMaximumReached: PropTypes.func,
+    wraps: PropTypes.bool,
   };
   static defaultProps = {
     initialValue: 0,
@@ -57,6 +58,7 @@ class UIStepper extends Component {
     onIncrement: null,
     onMinimumReached: null,
     onMaximumReached: null,
+    wraps: false,
   };
   constructor(props) {
     super(props);
@@ -91,14 +93,14 @@ class UIStepper extends Component {
   };
   resolveStyles = image => {
     const {
-      imageWidth,
-      imageHeight,
       tintColor,
+      height,
+      width,
     } = this.props;
     if (this.isExternalImage(image)) {
       return {
-        height: imageHeight,
-        width: imageWidth,
+        height: (height) - 10,
+        width: (width / 2) - 10,
       };
     }
     return {
@@ -112,6 +114,7 @@ class UIStepper extends Component {
       onValueChange,
       onMinimumReached,
       onMaximumReached,
+      wraps,
     } = this.props;
     if (min <= value && max >= value) {
       this.setState({
