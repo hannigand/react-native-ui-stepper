@@ -3,7 +3,7 @@
 [![npm version](https://img.shields.io/npm/v/react-native-ui-stepper.svg)](https://www.npmjs.com/package/react-native-ui-stepper)
 [![npm version](https://img.shields.io/npm/dt/react-native-ui-stepper.svg)](https://img.shields.io/npm/dt/react-native-ui-stepper.svg)
 
-![Examples](/screenshots/examples.png?raw=true "Examples")
+![Examples](https://i.imgur.com/D7OdHoh.png "Examples")
 
 A react-native component which mirrors the functionality of [UIStepper](https://developer.apple.com/reference/uikit/uistepper) from iOS.
 
