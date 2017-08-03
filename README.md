@@ -39,6 +39,7 @@ render() {
 | `minimumValue`    | Number            | Minimum value                                                                               | 0           |
 | `maximumValue`    | Number            | Maximum value                                                                               | 100         |
 | `steps`           | Number            | Increment value                                                                             | 1           |
+| `displayValue`           | Boolean            | Displays the stepper value between the increment and decrement button                                                                            | false           |
 | `tintColor`       | String            | Color used for images (-) and (+)                                                           | #0076FF     |
 | `backgroundColor` | String            | Background color                                                                            | transparent |
 | `width`           | Number            | Width                                                                                       | 94          |

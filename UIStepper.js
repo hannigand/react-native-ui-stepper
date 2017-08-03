@@ -1,16 +1,21 @@
-import React, {Component} from 'react';
-import {View, StyleSheet, TouchableOpacity, Image} from 'react-native';
-import PropTypes from 'prop-types';
+import React, { Component } from "react";
+import { View, StyleSheet, TouchableOpacity, Image, Text } from "react-native";
+import PropTypes from "prop-types";
 
 const styles = StyleSheet.create({
   container: {
-    flexDirection: 'row',
+    flexDirection: "row"
   },
   button: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: "center",
+    alignItems: "center"
   },
+  valueContainer: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center"
+  }
 });
 
 class UIStepper extends Component {
@@ -36,21 +41,22 @@ class UIStepper extends Component {
     onMinimumReached: PropTypes.func,
     onMaximumReached: PropTypes.func,
     wraps: PropTypes.bool,
+    displayValue: PropTypes.bool
   };
   static defaultProps = {
     initialValue: 0,
     minimumValue: 0,
     maximumValue: 100,
     steps: 1,
-    tintColor: '#0076FF',
-    backgroundColor: 'transparent',
-    decrementImage: require('./assets/decrement.png'),
-    incrementImage: require('./assets/increment.png'),
+    tintColor: "#0076FF",
+    backgroundColor: "transparent",
+    decrementImage: require("./assets/decrement.png"),
+    incrementImage: require("./assets/increment.png"),
     imageWidth: 45,
     imageHeight: 27,
     width: 94,
     height: 29,
-    borderColor: '#0076FF',
+    borderColor: "#0076FF",
     borderWidth: 1,
     borderRadius: 4,
     onValueChange: null,
@@ -59,52 +65,43 @@ class UIStepper extends Component {
     onMinimumReached: null,
     onMaximumReached: null,
     wraps: false,
+    displayValue: false
   };
   constructor(props) {
     super(props);
     this.state = {
-      value: this.props.initialValue,
+      value: this.props.initialValue
     };
   }
   decrement = () => {
-    const {
-      steps,
-      onDecrement,
-    } = this.props;
+    const { steps, onDecrement } = this.props;
     let value = this.state.value;
     value -= steps;
     this.validate(value, onDecrement);
   };
   increment = () => {
-    const {
-      steps,
-      onIncrement,
-    } = this.props;
+    const { steps, onIncrement } = this.props;
     let value = this.state.value;
     value += steps;
     this.validate(value, onIncrement);
   };
-  isExternalImage = image => typeof image === 'string';
+  isExternalImage = image => typeof image === "string";
   resolveImage = image => {
     if (this.isExternalImage(image)) {
-      return {uri: image};
+      return { uri: image };
     }
     return image;
   };
   resolveStyles = image => {
-    const {
-      tintColor,
-      height,
-      width,
-    } = this.props;
+    const { tintColor, height, width } = this.props;
     if (this.isExternalImage(image)) {
       return {
-        height: (height) - 10,
-        width: (width / 2) - 10,
+        height: height - 10,
+        width: width / 2 - 10
       };
     }
     return {
-      tintColor,
+      tintColor
     };
   };
   validate = (value, callback) => {
@@ -114,25 +111,18 @@ class UIStepper extends Component {
       onValueChange,
       onMinimumReached,
       onMaximumReached,
-      wraps,
+      wraps
     } = this.props;
-    console.log({value, min, max})
     if (min <= value && max >= value) {
-      this.setState({
-        value,
-      });
-      if (onValueChange) {
-        onValueChange(value);
-      }
+      this.setValue(value);
       if (callback) {
         callback(value);
       }
     }
     if (value < min) {
-      console.log('inside 1')
-      if(wraps) {
+      if (wraps) {
         this.setState({
-          value: max,
+          value: max
         });
         if (onValueChange) {
           onValueChange(max);
@@ -145,10 +135,9 @@ class UIStepper extends Component {
       onMinimumReached && onMinimumReached(value);
     }
     if (value > max) {
-      console.log('inside 2')
-      if(wraps) {
+      if (wraps) {
         this.setState({
-          value: min,
+          value: min
         });
         if (onValueChange) {
           onValueChange(min);
@@ -159,6 +148,20 @@ class UIStepper extends Component {
         return;
       }
       onMaximumReached && onMaximumReached(value);
+    }
+  };
+  setValue = (value, callback) => {
+    const { wraps, onValueChange } = this.props;
+    if (wraps) {
+      this.setState({
+        value: value
+      });
+      if (onValueChange) {
+        onValueChange(value);
+      }
+      if (callback) {
+        callback(value);
+      }
     }
   };
   render() {
@@ -175,6 +178,7 @@ class UIStepper extends Component {
       borderColor,
       borderWidth,
       borderRadius,
+      displayValue
     } = this.props;
     return (
       <View
@@ -186,8 +190,8 @@ class UIStepper extends Component {
             height,
             borderColor,
             borderWidth,
-            borderRadius,
-          },
+            borderRadius
+          }
         ]}
       >
         <TouchableOpacity
@@ -198,8 +202,8 @@ class UIStepper extends Component {
             styles.button,
             {
               borderRightWidth: borderWidth,
-              borderRightColor: borderColor,
-            },
+              borderRightColor: borderColor
+            }
           ]}
         >
           <Image
@@ -207,11 +211,18 @@ class UIStepper extends Component {
             style={[this.resolveStyles(decrementImage)]}
           />
         </TouchableOpacity>
+        {displayValue &&
+          <View style={styles.valueContainer}>
+            <Text>{this.state.value}</Text>
+          </View>}
         <TouchableOpacity
           onPress={() => {
             this.increment();
           }}
-          style={styles.button}
+          style={[styles.button, {
+            borderLeftWidth: displayValue ? 1 : 0,
+            borderColor,
+          }]}
         >
           <Image
             source={this.resolveImage(incrementImage)}
