@@ -41,7 +41,10 @@ class UIStepper extends Component {
     onMinimumReached: PropTypes.func,
     onMaximumReached: PropTypes.func,
     wraps: PropTypes.bool,
-    displayValue: PropTypes.bool
+    displayValue: PropTypes.bool,
+    textColor: PropTypes.string,
+    fontSize: PropTypes.number,
+    overrideTintColor: PropTypes.bool,
   };
   static defaultProps = {
     initialValue: 0,
@@ -65,7 +68,10 @@ class UIStepper extends Component {
     onMinimumReached: null,
     onMaximumReached: null,
     wraps: false,
-    displayValue: false
+    displayValue: false,
+    textColor: "#0076FF",
+    fontSize: 15,
+    overrideTintColor: false,
   };
   constructor(props) {
     super(props);
@@ -93,12 +99,16 @@ class UIStepper extends Component {
     return image;
   };
   resolveStyles = image => {
-    const { tintColor, height, width } = this.props;
+    const { tintColor, height, width, overrideTintColor } = this.props;
     if (this.isExternalImage(image)) {
-      return {
-        height: height - 10,
-        width: width / 2 - 10
-      };
+      const styles = {
+        flex: 1,
+        alignSelf: "stretch"
+      }
+      if(overrideTintColor) {
+        styles.tintColor = tintColor;
+      }
+      return styles;
     }
     return {
       tintColor
@@ -114,10 +124,16 @@ class UIStepper extends Component {
       wraps
     } = this.props;
     if (min <= value && max >= value) {
-      this.setValue(value);
+      this.setState({
+        value,
+      });
+      if (onValueChange) {
+        onValueChange(value);
+      }
       if (callback) {
         callback(value);
       }
+      return;
     }
     if (value < min) {
       if (wraps) {
@@ -151,17 +167,15 @@ class UIStepper extends Component {
     }
   };
   setValue = (value, callback) => {
-    const { wraps, onValueChange } = this.props;
-    if (wraps) {
-      this.setState({
-        value: value
-      });
-      if (onValueChange) {
-        onValueChange(value);
-      }
-      if (callback) {
-        callback(value);
-      }
+    const { onValueChange } = this.props;
+    this.setState({
+      value: value
+    });
+    if (onValueChange) {
+      onValueChange(value);
+    }
+    if (callback) {
+      callback(value);
     }
   };
   render() {
@@ -178,7 +192,9 @@ class UIStepper extends Component {
       borderColor,
       borderWidth,
       borderRadius,
-      displayValue
+      displayValue,
+      textColor,
+      fontSize
     } = this.props;
     return (
       <View
@@ -209,24 +225,31 @@ class UIStepper extends Component {
           <Image
             source={this.resolveImage(decrementImage)}
             style={[this.resolveStyles(decrementImage)]}
+            resizeMode={"contain"}
           />
         </TouchableOpacity>
         {displayValue &&
           <View style={styles.valueContainer}>
-            <Text>{this.state.value}</Text>
+            <Text style={{ color: textColor, fontSize }}>
+              {this.state.value}
+            </Text>
           </View>}
         <TouchableOpacity
           onPress={() => {
             this.increment();
           }}
-          style={[styles.button, {
-            borderLeftWidth: displayValue ? 1 : 0,
-            borderColor,
-          }]}
+          style={[
+            styles.button,
+            {
+              borderLeftWidth: displayValue ? 1 : 0,
+              borderColor
+            }
+          ]}
         >
           <Image
             source={this.resolveImage(incrementImage)}
             style={[this.resolveStyles(incrementImage)]}
+            resizeMode={"contain"}
           />
         </TouchableOpacity>
       </View>
