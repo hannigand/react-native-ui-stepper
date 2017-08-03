@@ -33,25 +33,25 @@ render() {
 
 ## Props
 
-| Name              | Type              | Description                                                                                 | Default     |
-|-------------------|-------------------|---------------------------------------------------------------------------------------------|-------------|
-| `initialValue`    | Number            | Start value                                                                                 | 0           |
-| `minimumValue`    | Number            | Minimum value                                                                               | 0           |
-| `maximumValue`    | Number            | Maximum value                                                                               | 100         |
-| `steps`           | Number            | Increment value                                                                             | 1           |
-| `displayValue`           | Boolean            | Displays the stepper value between the increment and decrement button                                                                            | false           |
-| `tintColor`       | String            | Color used for images (-) and (+)                                                           | #0076FF     |
-| `backgroundColor` | String            | Background color                                                                            | transparent |
-| `width`           | Number            | Width                                                                                       | 94          |
-| `height`          | Number            | Height                                                                                      | 29          |
-| `borderColor`     | String            | Color used for the border                                                                   | #0076FF     |
-| `borderWidth`     | Number            | Width of the border                                                                         | 1           |
-| `borderRadius`    | Number            | Radius of the border                                                                        | 4           |
-| `incrementImage`  | String or Number  | The image to be used on the Increment (+) button                                            | require('./assets/increment.png')           |
-| `decrementImage`  | String or Number  | The image to be used on the Increment (-) button                                            | require('./assets/decrement.png')           |
-| `onValueChange`   | Function          | Executed when the value changes. The value is passed as a parameter                         | null        |
-| `onIncrement`     | Function          | Executed when the User clicks the increment (+) button. The value is passed as a parameter  | null        |
-| `onDecrement`     | Function          | Executed when the User clicks the decrement (+) button. The value is passed as a parameter  | null        |
-| `onMinimumReached` | Function | Executed when the `minimumValue` is reached. The value is passed as a parameter | null |
-| `onMaximumReached` | Function | Executed when the `maximumValue` is reached. The value is passed as a parameter | null |
-| `wraps`           | Boolean | When set to true, incrementing beyond the `maximumValue` will set the value to `minimumValue` and vice versa | false |
+| Name               | Type     | Description                                                                                                  | Default     |
+|--------------------|----------|--------------------------------------------------------------------------------------------------------------|-------------|
+| `initialValue`     | Number   | Start value                                                                                                  | 0           |
+| `minimumValue`     | Number   | Minimum value                                                                                                | 0           |
+| `maximumValue`     | Number   | Maximum value                                                                                                | 100         |
+| `steps`            | Number   | Increment value                                                                                              | 1           |
+| `displayValue`     | Boolean  | Displays the stepper value between the increment and decrement button                                        | false       |
+| `wraps`            | Boolean  | When set to true, incrementing beyond the `maximumValue` will set the value to `minimumValue` and vice versa | false       |
+| `tintColor`        | String   | Color used for images (-) and (+)                                                                            | #0076FF     |
+| `backgroundColor`  | String   | Background color                                                                                             | transparent |
+| `width`            | Number   | Width                                                                                                        | 94          |
+| `height`           | Number   | Height                                                                                                       | 29          |
+| `textColor`        | String   | The desired text colour which will be used when `displayValue` is set to `true`                              | #0076FF     |
+| `fontSize`         | Number   | The font size used on the value displayed when `displayValue` is set to `true`                               | 15          |
+| `borderColor`      | String   | Color used for the border                                                                                    | #0076FF     |
+| `borderWidth`      | Number   | Width of the border                                                                                          | 1           |
+| `borderRadius`     | Number   | Radius of the border                                                                                         | 4           |
+| `onValueChange`    | Function | Executed when the value changes. The value is passed as a parameter                                          | null        |
+| `onIncrement`      | Function | Executed when the User clicks the increment (+) button. The value is passed as a parameter                   | null        |
+| `onDecrement`      | Function | Executed when the User clicks the decrement (+) button. The value is passed as a parameter                   | null        |
+| `onMinimumReached` | Function | Executed when the `minimumValue` is reached. The value is passed as a parameter                              | null        |
+| `onMaximumReached` | Function | Executed when the `maximumValue` is reached. The value is passed as a parameter                              | null        |
