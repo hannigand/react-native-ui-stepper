@@ -25,5 +25,8 @@
   "bugs": {
     "url": "https://github.com/hannigand/react-native-ui-stepper/issues"
   },
-  "homepage": "https://github.com/hannigand/react-native-ui-stepper#readme"
+  "homepage": "https://github.com/hannigand/react-native-ui-stepper#readme",
+  "dependencies": {
+    "prop-types": "^15.5.10"
+  }
 }
