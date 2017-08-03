@@ -53,3 +53,4 @@ render() {
 | `onDecrement`     | Function          | Executed when the User clicks the decrement (+) button. The value is passed as a parameter  | null        |
 | `onMinimumReached` | Function | Executed when the `minimumValue` is reached. The value is passed as a parameter | null |
 | `onMaximumReached` | Function | Executed when the `maximumValue` is reached. The value is passed as a parameter | null |
+| `wraps`           | Boolean | When set to true, incrementing beyond the `maximumValue` will set the value to `minimumValue` and vice versa | false |
