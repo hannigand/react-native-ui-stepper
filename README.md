@@ -5,11 +5,11 @@
 
 ![Examples](https://i.imgur.com/D7OdHoh.png "Examples")
 
-**You can now use vertical UI steppers**
-
 A react-native component which mirrors the functionality of [UIStepper](https://developer.apple.com/reference/uikit/uistepper) from iOS.
 
 > A stepper control provides a user interface for incrementing or decrementing a value. A stepper displays two buttons, one with a minus (“–”) symbol and one with a plus (“+”) symbol.
+
+**You can now configure your react-native-ui-stepper to be vertical**
 
 ## Installation
 `npm i react-native-ui-stepper`
