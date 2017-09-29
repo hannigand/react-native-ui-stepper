@@ -29,6 +29,7 @@ render() {
 ```
 
 ## Demo
+
 ![Demo example](http://g.recordit.co/ipvGlYfRpa.gif "Demo example")
 
 
@@ -42,6 +43,8 @@ render() {
 | `maximumValue`      | Number   | Maximum value                                                                                                | 100         |
 | `steps`             | Number   | Increment value                                                                                              | 1           |
 | `displayValue`      | Boolean  | Displays the stepper value between the increment and decrement button                                        | false       |
+| `incrementImage`      | String or Number  | Override the default increment image                                       | require('./assets/increment.png')       |
+| `decrementImage`      | String or Number  | Override the default decrement image                                     | require('./assets/decrement.png')       |
 | `wraps`             | Boolean  | When set to true, incrementing beyond the `maximumValue` will set the value to `minimumValue` and vice versa | false       |
 | `tintColor`         | String   | Changes the color of all the non-transparent pixels to the tintColor.                                        | #0076FF     |
 | `overrideTintColor` | Boolean  | When using an external image, set whether you want the tintColor to be applied to non-transparent pixels.    | false       |
@@ -58,3 +61,12 @@ render() {
 | `onDecrement`       | Function | Executed when the User clicks the decrement (+) button. The value is passed as a parameter                   | null        |
 | `onMinimumReached`  | Function | Executed when the `minimumValue` is reached. The value is passed as a parameter                              | null        |
 | `onMaximumReached`  | Function | Executed when the `maximumValue` is reached. The value is passed as a parameter                              | null        |
+
+## Run Example
+
+```
+$ git clone https://github.com/hannigand/react-native-ui-stepper.git
+$ cd example
+$ yarn # or npm install
+$ react-native run-ios
+```
