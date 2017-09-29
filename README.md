@@ -51,6 +51,8 @@ You can now use custom images, from your local file system or from the Internet.
 | `tintColor`         | String   | Changes the color of all the non-transparent pixels to the tintColor.                                        | #0076FF     |
 | `overrideTintColor` | Boolean  | When using an external image, set whether you want the tintColor to be applied to non-transparent pixels.    | false       |
 | `backgroundColor`   | String   | Background color                                                                                             | transparent |
+| `vertical`   | Boolean  | Display a vertical UI Stepper                                                                                           | false |
+| `displayDecrementFirst`   | Boolean  | Display the decrement button above the increment button, only works when `vertical` is `true`                                                            | false |
 | `width`             | Number   | Width                                                                                                        | 94          |
 | `height`            | Number   | Height                                                                                                       | 29          |
 | `textColor`         | String   | The desired text colour which will be used when `displayValue` is set to `true`                              | #0076FF     |
