@@ -28,6 +28,8 @@ render() {
 }
 ```
 
+You can now use custom images, from your local file system or from the Internet. See [Props](#props) for more details.
+
 ## Demo
 
 ![Demo example](http://g.recordit.co/ipvGlYfRpa.gif "Demo example")
