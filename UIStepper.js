@@ -45,6 +45,8 @@ class UIStepper extends Component {
     textColor: PropTypes.string,
     fontSize: PropTypes.number,
     overrideTintColor: PropTypes.bool,
+    vertical: PropTypes.bool,
+    displayDecrementFirst: PropTypes.bool,
   };
   static defaultProps = {
     initialValue: 0,
@@ -72,6 +74,8 @@ class UIStepper extends Component {
     textColor: "#0076FF",
     fontSize: 15,
     overrideTintColor: false,
+    vertical: false,
+    displayDecrementFirst: false,
   };
   constructor(props) {
     super(props);
@@ -194,7 +198,9 @@ class UIStepper extends Component {
       borderRadius,
       displayValue,
       textColor,
-      fontSize
+      fontSize,
+      vertical,
+      displayDecrementFirst
     } = this.props;
     return (
       <View
@@ -202,23 +208,24 @@ class UIStepper extends Component {
           styles.container,
           {
             backgroundColor,
-            width,
-            height,
+            width: vertical ? width / 2 : width,
+            height: vertical ? 'auto' : height,
             borderColor,
             borderWidth,
-            borderRadius
+            borderRadius,
+            flex: 1,
+            flexDirection: vertical ? displayDecrementFirst ? 'column' : 'column-reverse' : 'row',
           }
         ]}
       >
         <TouchableOpacity
-          onPress={() => {
-            this.decrement();
-          }}
+          onPress={this.decrement}
           style={[
             styles.button,
             {
-              borderRightWidth: borderWidth,
-              borderRightColor: borderColor
+              borderRightWidth:  vertical ? 0 : borderWidth,
+              borderRightColor: borderColor,
+              height: vertical ? 30 : 'auto'
             }
           ]}
         >
@@ -235,14 +242,13 @@ class UIStepper extends Component {
             </Text>
           </View>}
         <TouchableOpacity
-          onPress={() => {
-            this.increment();
-          }}
+          onPress={this.increment}
           style={[
             styles.button,
             {
-              borderLeftWidth: displayValue ? 1 : 0,
-              borderColor
+              borderLeftWidth: vertical ? 0 : displayValue ? 1 : 0,
+              borderColor,
+              height: vertical ? 30 : 'auto'
             }
           ]}
         >

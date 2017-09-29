@@ -9,6 +9,8 @@ A react-native component which mirrors the functionality of [UIStepper](https://
 
 > A stepper control provides a user interface for incrementing or decrementing a value. A stepper displays two buttons, one with a minus (“–”) symbol and one with a plus (“+”) symbol.
 
+**You can now configure your react-native-ui-stepper to be vertical**
+
 ## Installation
 `npm i react-native-ui-stepper`
 
@@ -28,7 +30,10 @@ render() {
 }
 ```
 
+You can now use custom images, from your local file system or from the Internet. See [Props](#props) for more details.
+
 ## Demo
+
 ![Demo example](http://g.recordit.co/ipvGlYfRpa.gif "Demo example")
 
 
@@ -42,10 +47,14 @@ render() {
 | `maximumValue`      | Number   | Maximum value                                                                                                | 100         |
 | `steps`             | Number   | Increment value                                                                                              | 1           |
 | `displayValue`      | Boolean  | Displays the stepper value between the increment and decrement button                                        | false       |
+| `incrementImage`      | String or Number  | Override the default increment image                                       | require('./assets/increment.png')       |
+| `decrementImage`      | String or Number  | Override the default decrement image                                     | require('./assets/decrement.png')       |
 | `wraps`             | Boolean  | When set to true, incrementing beyond the `maximumValue` will set the value to `minimumValue` and vice versa | false       |
 | `tintColor`         | String   | Changes the color of all the non-transparent pixels to the tintColor.                                        | #0076FF     |
 | `overrideTintColor` | Boolean  | When using an external image, set whether you want the tintColor to be applied to non-transparent pixels.    | false       |
 | `backgroundColor`   | String   | Background color                                                                                             | transparent |
+| `vertical`   | Boolean  | Display a vertical UI Stepper                                                                                           | false |
+| `displayDecrementFirst`   | Boolean  | Display the decrement button above the increment button, only works when `vertical` is `true`                                                            | false |
 | `width`             | Number   | Width                                                                                                        | 94          |
 | `height`            | Number   | Height                                                                                                       | 29          |
 | `textColor`         | String   | The desired text colour which will be used when `displayValue` is set to `true`                              | #0076FF     |
@@ -58,3 +67,12 @@ render() {
 | `onDecrement`       | Function | Executed when the User clicks the decrement (+) button. The value is passed as a parameter                   | null        |
 | `onMinimumReached`  | Function | Executed when the `minimumValue` is reached. The value is passed as a parameter                              | null        |
 | `onMaximumReached`  | Function | Executed when the `maximumValue` is reached. The value is passed as a parameter                              | null        |
+
+## Run Example
+
+```
+$ git clone https://github.com/hannigand/react-native-ui-stepper.git
+$ cd example
+$ yarn # or npm install
+$ react-native run-ios
+```
