@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import { Text, View, TouchableOpacity, Linking } from 'react-native';
+import UIStepper from 'react-native-ui-stepper';
+
 import Container from '../components/Container';
 import Header from '../components/Header';
 import Item from '../components/Item';
 
-import UIStepper from '../UIStepper';
 
 class MainPage extends Component {
   static navigationOptions = {
@@ -56,7 +57,7 @@ class MainPage extends Component {
           <Text style={{marginTop: 10, marginBottom: 10}}>This uses SAME two images as the above, from Iconfinder, loaded over the Internet</Text>
         </Item>
         <Item>
-          <UIStepper displayValue borderColor="transparent" textColor="rebeccapurple" overrideTintColor tintColor="rebeccapurple" decrementImage={require("../assets/decrement.png")} incrementImage="https://cdn0.iconfinder.com/data/icons/math-business-icon-set/93/1_1-128.png" />
+          <UIStepper displayValue borderColor="transparent" textColor="rebeccapurple" overrideTintColor tintColor="rebeccapurple" incrementImage="https://cdn0.iconfinder.com/data/icons/math-business-icon-set/93/1_1-128.png" />
           <Text style={{marginTop: 10, marginBottom: 10}}>Mixture of a local and network image</Text>
         </Item>
         <Item>
