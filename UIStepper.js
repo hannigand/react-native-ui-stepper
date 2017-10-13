@@ -1,21 +1,21 @@
-import React, { Component } from "react";
-import { View, StyleSheet, TouchableOpacity, Image, Text } from "react-native";
-import PropTypes from "prop-types";
+import React, { Component } from 'react';
+import { View, StyleSheet, TouchableOpacity, Image, Text } from 'react-native';
+import PropTypes from 'prop-types';
 
 const styles = StyleSheet.create({
   container: {
-    flexDirection: "row"
+    flexDirection: 'row',
   },
   button: {
     flex: 1,
-    justifyContent: "center",
-    alignItems: "center"
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   valueContainer: {
     flex: 1,
-    justifyContent: "center",
-    alignItems: "center"
-  }
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
 });
 
 class UIStepper extends Component {
@@ -53,15 +53,15 @@ class UIStepper extends Component {
     minimumValue: 0,
     maximumValue: 100,
     steps: 1,
-    tintColor: "#0076FF",
-    backgroundColor: "transparent",
-    decrementImage: require("./assets/decrement.png"),
-    incrementImage: require("./assets/increment.png"),
-    imageWidth: 45,
-    imageHeight: 27,
+    tintColor: '#0076FF',
+    backgroundColor: 'transparent',
+    decrementImage: require('./assets/decrement.png'),
+    incrementImage: require('./assets/increment.png'),
+    imageWidth: 20,
+    imageHeight: 15,
     width: 94,
     height: 29,
-    borderColor: "#0076FF",
+    borderColor: '#0076FF',
     borderWidth: 1,
     borderRadius: 4,
     onValueChange: null,
@@ -71,7 +71,7 @@ class UIStepper extends Component {
     onMaximumReached: null,
     wraps: false,
     displayValue: false,
-    textColor: "#0076FF",
+    textColor: '#0076FF',
     fontSize: 15,
     overrideTintColor: false,
     vertical: false,
@@ -80,8 +80,9 @@ class UIStepper extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      value: this.props.initialValue
+      value: this.props.initialValue,
     };
+    console.log(this.props);
   }
   decrement = () => {
     const { steps, onDecrement } = this.props;
@@ -95,7 +96,7 @@ class UIStepper extends Component {
     value += steps;
     this.validate(value, onIncrement);
   };
-  isExternalImage = image => typeof image === "string";
+  isExternalImage = image => typeof image === 'string';
   resolveImage = image => {
     if (this.isExternalImage(image)) {
       return { uri: image };
@@ -103,20 +104,53 @@ class UIStepper extends Component {
     return image;
   };
   resolveStyles = image => {
-    const { tintColor, height, width, overrideTintColor } = this.props;
+    const {
+      tintColor,
+      height,
+      width,
+      overrideTintColor,
+      imageHeight,
+      imageWidth,
+      buttonPadding,
+    } = this.props;
+    const containerHeight = height / 3;
+    const containerWidth = width / 3;
+
     if (this.isExternalImage(image)) {
       const styles = {
         flex: 1,
-        alignSelf: "stretch"
-      }
-      if(overrideTintColor) {
+        alignSelf: 'stretch',
+        width: this.getImageWidth(),
+        height: this.getImageHeight(),
+      };
+      if (overrideTintColor) {
         styles.tintColor = tintColor;
       }
       return styles;
     }
     return {
-      tintColor
+      tintColor,
+      width: this.getImageWidth(),
+      height: this.getImageHeight(),
     };
+  };
+  getImageHeight = () => {
+    const { imageHeight, height } = this.props;
+    const containerHeight = height;
+
+    if (imageHeight > containerHeight) {
+      return height;
+    }
+    return imageHeight;
+  };
+  getImageWidth = () => {
+    const { imageWidth, width } = this.props;
+    const containerWidth = width / 3;
+
+    if (imageWidth > containerWidth) {
+      return containerWidth;
+    }
+    return imageWidth;
   };
   validate = (value, callback) => {
     const {
@@ -125,7 +159,7 @@ class UIStepper extends Component {
       onValueChange,
       onMinimumReached,
       onMaximumReached,
-      wraps
+      wraps,
     } = this.props;
     if (min <= value && max >= value) {
       this.setState({
@@ -142,7 +176,7 @@ class UIStepper extends Component {
     if (value < min) {
       if (wraps) {
         this.setState({
-          value: max
+          value: max,
         });
         if (onValueChange) {
           onValueChange(max);
@@ -157,7 +191,7 @@ class UIStepper extends Component {
     if (value > max) {
       if (wraps) {
         this.setState({
-          value: min
+          value: min,
         });
         if (onValueChange) {
           onValueChange(min);
@@ -173,7 +207,7 @@ class UIStepper extends Component {
   setValue = (value, callback) => {
     const { onValueChange } = this.props;
     this.setState({
-      value: value
+      value: value,
     });
     if (onValueChange) {
       onValueChange(value);
@@ -200,7 +234,7 @@ class UIStepper extends Component {
       textColor,
       fontSize,
       vertical,
-      displayDecrementFirst
+      displayDecrementFirst,
     } = this.props;
     return (
       <View
@@ -213,9 +247,10 @@ class UIStepper extends Component {
             borderColor,
             borderWidth,
             borderRadius,
-            flex: 1,
-            flexDirection: vertical ? displayDecrementFirst ? 'column' : 'column-reverse' : 'row',
-          }
+            flexDirection: vertical
+              ? displayDecrementFirst ? 'column' : 'column-reverse'
+              : 'row',
+          },
         ]}
       >
         <TouchableOpacity
@@ -223,24 +258,25 @@ class UIStepper extends Component {
           style={[
             styles.button,
             {
-              borderRightWidth:  vertical ? 0 : borderWidth,
+              borderRightWidth: vertical ? 0 : borderWidth,
               borderRightColor: borderColor,
-              height: vertical ? 30 : 'auto'
-            }
+              height: vertical ? 30 : 'auto',
+            },
           ]}
         >
           <Image
             source={this.resolveImage(decrementImage)}
-            style={[this.resolveStyles(decrementImage)]}
-            resizeMode={"contain"}
+            style={this.resolveStyles(decrementImage)}
+            resizeMode={'contain'}
           />
         </TouchableOpacity>
-        {displayValue &&
+        {displayValue && (
           <View style={styles.valueContainer}>
             <Text style={{ color: textColor, fontSize }}>
               {this.state.value}
             </Text>
-          </View>}
+          </View>
+        )}
         <TouchableOpacity
           onPress={this.increment}
           style={[
@@ -248,14 +284,14 @@ class UIStepper extends Component {
             {
               borderLeftWidth: vertical ? 0 : displayValue ? 1 : 0,
               borderColor,
-              height: vertical ? 30 : 'auto'
-            }
+              height: vertical ? 30 : 'auto',
+            },
           ]}
         >
           <Image
             source={this.resolveImage(incrementImage)}
-            style={[this.resolveStyles(incrementImage)]}
-            resizeMode={"contain"}
+            style={this.resolveStyles(incrementImage)}
+            resizeMode={'contain'}
           />
         </TouchableOpacity>
       </View>

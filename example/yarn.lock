@@ -3478,9 +3478,9 @@ react-native-tab-view@^0.0.69:
   dependencies:
     prop-types "^15.5.8"
 
-react-native-ui-stepper@^1.1.0:
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/react-native-ui-stepper/-/react-native-ui-stepper-1.1.0.tgz#c7a7b573855ebb095d2eada6eddc7ebb37676c44"
+react-native-ui-stepper@1.2.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/react-native-ui-stepper/-/react-native-ui-stepper-1.2.0.tgz#e860b5a508f7b7ec33d2d8db10204729d3fd9278"
   dependencies:
     prop-types "^15.5.10"
 
