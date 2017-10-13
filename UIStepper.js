@@ -47,7 +47,6 @@ class UIStepper extends Component {
     overrideTintColor: PropTypes.bool,
     vertical: PropTypes.bool,
     displayDecrementFirst: PropTypes.bool,
-    buttonPadding: PropTypes.number,
   };
   static defaultProps = {
     initialValue: 0,
@@ -243,8 +242,8 @@ class UIStepper extends Component {
           styles.container,
           {
             backgroundColor,
-            width,
-            height,
+            width: vertical ? width / 2 : width,
+            height: vertical ? 'auto' : height,
             borderColor,
             borderWidth,
             borderRadius,
