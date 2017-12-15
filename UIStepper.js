@@ -84,7 +84,6 @@ class UIStepper extends Component {
     this.state = {
       value: this.props.initialValue
     };
-    console.log(this.props);
   }
   decrement = () => {
     const { steps, onDecrement } = this.props;
