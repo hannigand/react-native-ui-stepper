@@ -4,18 +4,18 @@ import PropTypes from 'prop-types';
 
 const styles = StyleSheet.create({
   container: {
-    flexDirection: 'row'
+    flexDirection: 'row',
   },
   button: {
     flex: 1,
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
   },
   valueContainer: {
     flex: 1,
     justifyContent: 'center',
-    alignItems: 'center'
-  }
+    alignItems: 'center',
+  },
 });
 
 class UIStepper extends Component {
@@ -82,7 +82,7 @@ class UIStepper extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      value: this.props.initialValue
+      value: this.props.initialValue,
     };
   }
   decrement = () => {
@@ -112,7 +112,7 @@ class UIStepper extends Component {
       overrideTintColor,
       imageHeight,
       imageWidth,
-      buttonPadding
+      buttonPadding,
     } = this.props;
     const containerHeight = height / 3;
     const containerWidth = width / 3;
@@ -122,7 +122,7 @@ class UIStepper extends Component {
         flex: 1,
         alignSelf: 'stretch',
         width: this.getImageWidth(),
-        height: this.getImageHeight()
+        height: this.getImageHeight(),
       };
       if (overrideTintColor) {
         styles.tintColor = tintColor;
@@ -132,7 +132,7 @@ class UIStepper extends Component {
     return {
       tintColor,
       width: this.getImageWidth(),
-      height: this.getImageHeight()
+      height: this.getImageHeight(),
     };
   };
   getImageHeight = () => {
@@ -160,7 +160,7 @@ class UIStepper extends Component {
       onValueChange,
       onMinimumReached,
       onMaximumReached,
-      wraps
+      wraps,
     } = this.props;
     if (min <= value && max >= value) {
       this.setState({
@@ -177,7 +177,7 @@ class UIStepper extends Component {
     if (value < min) {
       if (wraps) {
         this.setState({
-          value: max
+          value: max,
         });
         if (onValueChange) {
           onValueChange(max);
@@ -192,7 +192,7 @@ class UIStepper extends Component {
     if (value > max) {
       if (wraps) {
         this.setState({
-          value: min
+          value: min,
         });
         if (onValueChange) {
           onValueChange(min);
@@ -208,7 +208,7 @@ class UIStepper extends Component {
   setValue = (value, callback) => {
     const { onValueChange } = this.props;
     this.setState({
-      value: value
+      value: value,
     });
     if (onValueChange) {
       onValueChange(value);
@@ -251,8 +251,8 @@ class UIStepper extends Component {
             borderRadius,
             flexDirection: vertical
               ? displayDecrementFirst ? 'column' : 'column-reverse'
-              : 'row'
-          }
+              : 'row',
+          },
         ]}
       >
         <TouchableOpacity
@@ -262,8 +262,8 @@ class UIStepper extends Component {
             {
               borderRightWidth: vertical ? 0 : borderWidth,
               borderRightColor: borderColor,
-              height: vertical ? 30 : 'auto'
-            }
+              height: vertical ? 30 : 'auto',
+            },
           ]}
         >
           <Image
@@ -286,8 +286,8 @@ class UIStepper extends Component {
             {
               borderLeftWidth: vertical ? 0 : displayValue ? 1 : 0,
               borderColor,
-              height: vertical ? 30 : 'auto'
-            }
+              height: vertical ? 30 : 'auto',
+            },
           ]}
         >
           <Image
