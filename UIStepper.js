@@ -47,6 +47,7 @@ class UIStepper extends Component {
     overrideTintColor: PropTypes.bool,
     vertical: PropTypes.bool,
     displayDecrementFirst: PropTypes.bool,
+    fontFamily: PropTypes.string
   };
   static defaultProps = {
     initialValue: 0,
@@ -76,6 +77,7 @@ class UIStepper extends Component {
     overrideTintColor: false,
     vertical: false,
     displayDecrementFirst: false,
+    fontFamily: 'System'
   };
   constructor(props) {
     super(props);
@@ -162,7 +164,7 @@ class UIStepper extends Component {
     } = this.props;
     if (min <= value && max >= value) {
       this.setState({
-        value,
+        value
       });
       if (onValueChange) {
         onValueChange(value);
@@ -234,6 +236,7 @@ class UIStepper extends Component {
       fontSize,
       vertical,
       displayDecrementFirst,
+      fontFamily
     } = this.props;
     return (
       <View
@@ -271,7 +274,7 @@ class UIStepper extends Component {
         </TouchableOpacity>
         {displayValue && (
           <View style={styles.valueContainer}>
-            <Text style={{ color: textColor, fontSize }}>
+            <Text style={{ color: textColor, fontSize, fontFamily }}>
               {this.state.value}
             </Text>
           </View>

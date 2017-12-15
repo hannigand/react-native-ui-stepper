@@ -1,6 +1,6 @@
 {
   "name": "react-native-ui-stepper",
-  "version": "1.2.2",
+  "version": "1.2.3",
   "description": "A react-native implementation of the iOS UIStepper",
   "main": "UIStepper.js",
   "scripts": {
