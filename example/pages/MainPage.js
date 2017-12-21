@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Text, View, TouchableOpacity, Linking, Button } from 'react-native';
-import UIStepper from 'react-native-ui-stepper';
+import UIStepper from './UIStepper';
 
 import Container from '../components/Container';
 import Header from '../components/Header';
@@ -10,17 +10,40 @@ class MainPage extends Component {
   static navigationOptions = {
     title: 'Welcome',
   };
+  constructor() {
+    super();
+    this.state = {
+      value: 0,
+    };
+  }
+  componentDidMount() {
+    setInterval(() => {
+      this.setState({ value: this.state.value + 1 });
+    }, 1500);
+  }
+  increment = () => {
+    this.setState({ value: this.state.value + 1 });
+  };
+  decrement = () => {
+    this.setState({ value: this.state.value - 1 });
+  };
   render() {
     return (
       <View style={{ flex: 1 }}>
         <Container>
           <Header text="Welcome to react-native-ui-stepper" />
           <Item>
-            <UIStepper />
+            <UIStepper displayValue />
             <Text style={{ marginTop: 10, marginBottom: 10 }}>Basic usage</Text>
           </Item>
           <Item>
-            <UIStepper displayValue />
+            <UIStepper
+              displayValue
+              initialValue={0}
+              value={this.state.value}
+              onIncrement={this.increment}
+              onDecrement={this.decrement}
+            />
             <Text style={{ marginTop: 10, marginBottom: 10 }}>
               Display stepper value
             </Text>
