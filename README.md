@@ -71,6 +71,16 @@ You can now use custom images, from your local file system or from the Internet.
 | `onMaximumReached`      | Function         | Executed when the `maximumValue` is reached. The value is passed as a parameter                                                                                                     | null                              |
 | `innerRef`              | Function         | A reference to the rendered UIStepper. You can use this to gain access to class-based methods. `increment()`, `decrement()`, `resetValue()` and `setValue()` are most commonly used | null                              |
 
+## Contributing
+
+There are no requirements for contributing to the react-native-ui-stepper package. You can [browse](https://github.com/hannigand/react-native-ui-stepper/issues/) or raise issues that you are would like to contribute to.
+
+1. Fork the repository on Github
+2. Clone the project
+3. Commit changes to your forked branch
+4. Push your changes to your branch
+5. Submit a Pull Request so that it can be merged into react-native-ui-stepper
+
 ## Run Example
 
 ```
