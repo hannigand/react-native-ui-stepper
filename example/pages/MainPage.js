@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Text, View, TouchableOpacity, Linking, Button } from 'react-native';
-import UIStepper from './UIStepper';
+import UIStepper from 'react-native-ui-stepper';
 
 import Container from '../components/Container';
 import Header from '../components/Header';
