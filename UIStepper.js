@@ -47,7 +47,8 @@ class UIStepper extends Component {
     overrideTintColor: PropTypes.bool,
     vertical: PropTypes.bool,
     displayDecrementFirst: PropTypes.bool,
-    fontFamily: PropTypes.string
+    fontFamily: PropTypes.string,
+    innerRef: PropTypes.func,
   };
   static defaultProps = {
     initialValue: 0,
@@ -77,13 +78,26 @@ class UIStepper extends Component {
     overrideTintColor: false,
     vertical: false,
     displayDecrementFirst: false,
-    fontFamily: 'System'
+    fontFamily: 'System',
+    innerRef: null,
   };
   constructor(props) {
     super(props);
     this.state = {
-      value: this.props.initialValue,
+      value: props.initialValue,
     };
+  }
+  componentDidMount() {
+    const { innerRef } = this.props;
+    if (innerRef) {
+      innerRef(this);
+    }
+  }
+  componentWillUnmount() {
+    const { innerRef } = this.props;
+    if (innerRef) {
+      innerRef(undefined);
+    }
   }
   decrement = () => {
     const { steps, onDecrement } = this.props;
@@ -164,7 +178,7 @@ class UIStepper extends Component {
     } = this.props;
     if (min <= value && max >= value) {
       this.setState({
-        value
+        value,
       });
       if (onValueChange) {
         onValueChange(value);
@@ -217,6 +231,12 @@ class UIStepper extends Component {
       callback(value);
     }
   };
+  resetValue = () => {
+    const { initialValue } = this.props;
+    this.setState({
+      value: initialValue,
+    });
+  };
   render() {
     const {
       tintColor,
@@ -236,7 +256,7 @@ class UIStepper extends Component {
       fontSize,
       vertical,
       displayDecrementFirst,
-      fontFamily
+      fontFamily,
     } = this.props;
     return (
       <View
