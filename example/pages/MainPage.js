@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { Text, View, TouchableOpacity, Linking } from 'react-native';
-import UIStepper from 'react-native-ui-stepper';
+import { Text, View, TouchableOpacity, Linking, Button } from 'react-native';
+import UIStepper from './UIStepper';
 
 import Container from '../components/Container';
 import Header from '../components/Header';
@@ -8,7 +8,24 @@ import Item from '../components/Item';
 
 class MainPage extends Component {
   static navigationOptions = {
-    title: 'Welcome'
+    title: 'Welcome',
+  };
+  constructor() {
+    super();
+    this.state = {
+      value: 0,
+    };
+  }
+  componentDidMount() {
+    setInterval(() => {
+      this.setState({ value: this.state.value + 1 });
+    }, 1500);
+  }
+  increment = () => {
+    this.setState({ value: this.state.value + 1 });
+  };
+  decrement = () => {
+    this.setState({ value: this.state.value - 1 });
   };
   render() {
     return (
@@ -16,7 +33,7 @@ class MainPage extends Component {
         <Container>
           <Header text="Welcome to react-native-ui-stepper" />
           <Item>
-            <UIStepper />
+            <UIStepper displayValue />
             <Text style={{ marginTop: 10, marginBottom: 10 }}>Basic usage</Text>
           </Item>
           <Item>
@@ -166,7 +183,6 @@ class MainPage extends Component {
               Mixture of a local and network image
             </Text>
           </Item>
-
           <Item>
             <UIStepper
               displayValue
@@ -183,6 +199,53 @@ class MainPage extends Component {
               Display the decrement button above the increment
             </Text>
           </Item>
+          <Item>
+            <UIStepper
+              displayValue
+              innerRef={stepper => {
+                this.stepper = stepper;
+              }}
+            />
+            <Button
+              title="Increment"
+              onPress={() => {
+                this.stepper.increment();
+              }}
+            />
+            <Button
+              title="Decrement"
+              onPress={() => {
+                this.stepper.decrement();
+              }}
+            />
+            <Button
+              title="Reset"
+              onPress={() => {
+                this.stepper.resetValue();
+              }}
+            />
+            <Button
+              title="Set value to 50"
+              onPress={() => {
+                this.stepper.setValue(50);
+              }}
+            />
+            <Text style={{ marginTop: 10, marginBottom: 10 }}>
+              Use the innerRef prop to gain access to class-based methods
+            </Text>
+          </Item>
+          <Item>
+            <UIStepper
+              displayValue
+              initialValue={0}
+              value={this.state.value}
+              onIncrement={this.increment}
+              onDecrement={this.decrement}
+            />
+            <Text style={{ marginTop: 10, marginBottom: 10 }}>
+              Use a state variable to update the UIStepper
+            </Text>
+          </Item>
         </Container>
         <TouchableOpacity
           style={{
@@ -193,11 +256,11 @@ class MainPage extends Component {
             left: 10,
             padding: 10,
             borderRadius: 3,
-            backgroundColor: '#428bca'
+            backgroundColor: '#428bca',
           }}
           onPress={() => {
             Linking.openURL(
-              'https://github.com/hannigand/react-native-ui-stepper/blob/master/README.md#props'
+              'https://github.com/hannigand/react-native-ui-stepper/blob/master/README.md#props',
             );
           }}
         >
