@@ -190,7 +190,7 @@ class UIStepper extends Component {
     } = this.props;
     if (min <= value && max >= value) {
       this.setState({
-        value
+        value,
       });
       if (onValueChange) {
         onValueChange(value);
