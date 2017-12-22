@@ -33,7 +33,7 @@ class MainPage extends Component {
         <Container>
           <Header text="Welcome to react-native-ui-stepper" />
           <Item>
-            <UIStepper displayValue />
+            <UIStepper />
             <Text style={{ marginTop: 10, marginBottom: 10 }}>Basic usage</Text>
           </Item>
           <Item>
