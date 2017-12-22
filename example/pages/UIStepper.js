@@ -148,6 +148,7 @@ class UIStepper extends Component {
         alignSelf: 'stretch',
         width: this.getImageWidth(),
         height: this.getImageHeight(),
+        alignSelf: 'center',
       };
       if (overrideTintColor) {
         styles.tintColor = tintColor;

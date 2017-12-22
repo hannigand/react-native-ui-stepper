@@ -37,13 +37,7 @@ class MainPage extends Component {
             <Text style={{ marginTop: 10, marginBottom: 10 }}>Basic usage</Text>
           </Item>
           <Item>
-            <UIStepper
-              displayValue
-              initialValue={0}
-              value={this.state.value}
-              onIncrement={this.increment}
-              onDecrement={this.decrement}
-            />
+            <UIStepper displayValue />
             <Text style={{ marginTop: 10, marginBottom: 10 }}>
               Display stepper value
             </Text>
@@ -238,6 +232,18 @@ class MainPage extends Component {
             />
             <Text style={{ marginTop: 10, marginBottom: 10 }}>
               Use the innerRef prop to gain access to class-based methods
+            </Text>
+          </Item>
+          <Item>
+            <UIStepper
+              displayValue
+              initialValue={0}
+              value={this.state.value}
+              onIncrement={this.increment}
+              onDecrement={this.decrement}
+            />
+            <Text style={{ marginTop: 10, marginBottom: 10 }}>
+              Use a state variable to update the UIStepper
             </Text>
           </Item>
         </Container>
