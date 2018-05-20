@@ -70,7 +70,8 @@ You can now use custom images, from your local file system or from the Internet.
 | `onMinimumReached`      | Function         | Executed when the `minimumValue` is reached. The value is passed as a parameter                                                                                                     | null                              |
 | `onMaximumReached`      | Function         | Executed when the `maximumValue` is reached. The value is passed as a parameter                                                                                                     | null                              |
 | `innerRef`              | Function         | A reference to the rendered UIStepper. You can use this to gain access to class-based methods. `increment()`, `decrement()`, `resetValue()` and `setValue()` are most commonly used | null                              |
-
+| `repeatActionWhenHolding`      | Boolean         | Continue to increment/decrement when holding | false              
+| `repeatInterval`      | Number         | Number of milliseconds between action repetitions when holding. Only works if `repeatActionWhenHolding` is set to `true` | 100              
 ## Contributing
 
 There are no requirements for contributing to the react-native-ui-stepper package. You can [browse](https://github.com/hannigand/react-native-ui-stepper/issues/) or raise issues that you are would like to contribute to.

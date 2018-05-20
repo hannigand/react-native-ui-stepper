@@ -18,6 +18,9 @@ const styles = StyleSheet.create({
   },
 });
 
+const ACTION_INCREMENT = 'INCREMENT';
+const ACTION_DECREMENT = 'DECREMENT';
+
 class UIStepper extends Component {
   static propTypes = {
     initialValue: PropTypes.number,
@@ -50,6 +53,8 @@ class UIStepper extends Component {
     displayDecrementFirst: PropTypes.bool,
     fontFamily: PropTypes.string,
     innerRef: PropTypes.func,
+    repeatActionWhenHolding: PropTypes.bool,
+    repeatInterval: PropTypes.number,
   };
   static defaultProps = {
     initialValue: 0,
@@ -82,12 +87,15 @@ class UIStepper extends Component {
     displayDecrementFirst: false,
     fontFamily: 'System',
     innerRef: null,
+    repeatActionWhenHolding: false,
+    repeatInterval: 100,
   };
   constructor(props) {
     super(props);
     this.state = {
       value: props.initialValue,
     };
+    this.timer = null;
   }
   componentDidMount() {
     const { innerRef } = this.props;
@@ -114,13 +122,13 @@ class UIStepper extends Component {
     const { steps, onDecrement } = this.props;
     let value = this.state.value;
     value -= steps;
-    this.validate(value, onDecrement);
+    this.validate(value, onDecrement, ACTION_DECREMENT);
   };
   increment = () => {
     const { steps, onIncrement } = this.props;
     let value = this.state.value;
     value += steps;
-    this.validate(value, onIncrement);
+    this.validate(value, onIncrement, ACTION_INCREMENT);
   };
   isExternalImage = image => typeof image === 'string';
   resolveImage = image => {
@@ -179,7 +187,7 @@ class UIStepper extends Component {
     }
     return imageWidth;
   };
-  validate = (value, callback) => {
+  validate = (value, callback, actionType) => {
     const {
       minimumValue: min,
       maximumValue: max,
@@ -187,6 +195,8 @@ class UIStepper extends Component {
       onMinimumReached,
       onMaximumReached,
       wraps,
+      repeatActionWhenHolding,
+      repeatInterval
     } = this.props;
     if (min <= value && max >= value) {
       this.setState({
@@ -197,6 +207,12 @@ class UIStepper extends Component {
       }
       if (callback) {
         callback(value);
+      }
+      if (repeatActionWhenHolding && actionType === ACTION_INCREMENT) {
+        this.timer = setTimeout(this.increment, repeatInterval);
+      }
+      if (repeatActionWhenHolding && actionType === ACTION_DECREMENT) {
+        this.timer = setTimeout(this.decrement, repeatInterval);
       }
       return;
     }
@@ -213,6 +229,7 @@ class UIStepper extends Component {
         }
         return;
       }
+      clearTimeout(this.timer)
       onMinimumReached && onMinimumReached(value);
     }
     if (value > max) {
@@ -228,6 +245,7 @@ class UIStepper extends Component {
         }
         return;
       }
+      clearTimeout(this.timer)
       onMaximumReached && onMaximumReached(value);
     }
   };
@@ -288,7 +306,8 @@ class UIStepper extends Component {
         ]}
       >
         <TouchableOpacity
-          onPress={this.decrement}
+          onPressIn={this.decrement}
+          onPressOut={() => clearTimeout(this.timer)}
           style={[
             styles.button,
             {
@@ -312,7 +331,8 @@ class UIStepper extends Component {
           </View>
         )}
         <TouchableOpacity
-          onPress={this.increment}
+          onPressIn={this.increment}
+          onPressOut={() => clearTimeout(this.timer)}
           style={[
             styles.button,
             {
