@@ -4,7 +4,7 @@
   "description": "A react-native implementation of the iOS UIStepper",
   "main": "UIStepper.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
   },
   "repository": {
     "type": "git",
@@ -28,5 +28,8 @@
   "homepage": "https://github.com/hannigand/react-native-ui-stepper#readme",
   "dependencies": {
     "prop-types": "^15.5.10"
+  },
+  "devDependencies": {
+    "jest": "^23.5.0"
   }
 }
