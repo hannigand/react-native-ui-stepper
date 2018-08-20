@@ -1,19 +1,7 @@
 language: node_js
-
 node_js:
   - "10"
-
-sudo: false
-
-before_install:
-  - curl -o- -L https://yarnpkg.com/install.sh | bash
-  - export PATH="$HOME/.yarn/bin:$PATH"
-
-cache:
-  yarn: true
-  directories:
-    - ".eslintcache"
-    - "node_modules"
-
+install:
+  - npm install
 script:
-  - yarn run test
+  - npm test

@@ -4,7 +4,7 @@
   "description": "A react-native implementation of the iOS UIStepper",
   "main": "UIStepper.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest && codecov -e TRAVIS_NODE_VERSION -t e9f91380-7919-47a0-9eb0-35b7c1f647c0"
   },
   "repository": {
     "type": "git",
@@ -30,6 +30,11 @@
     "prop-types": "^15.5.10"
   },
   "devDependencies": {
+    "codecov": "^3.0.4",
     "jest": "^23.5.0"
+  },
+  "jest": {
+    "coverageDirectory": "./coverage/",
+    "collectCoverage": true
   }
 }

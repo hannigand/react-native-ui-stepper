@@ -6,11 +6,20 @@
 
 <hr />
 
+[![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://github.com/hannigand/react-native-ui-stepper/graphs/commit-activity) [![npm version](https://img.shields.io/npm/v/react-native-ui-stepper.svg)](https://www.npmjs.com/package/react-native-ui-stepper) [![npm version](https://img.shields.io/npm/dt/react-native-ui-stepper.svg)](https://img.shields.io/npm/dt/react-native-ui-stepper.svg)
+
 Welcome to a completely new re-write of the [react-native-ui-stepper](https://github.com/hannigand/react-native-ui-stepper) library. This version is **NOT** backwards capatiable, but it's more flexible and stable than the previous.
 
 ### Why?
 
 Within a year of being published, this library has been downloaded more than [8500 times](https://npm-stat.com/charts.html?package=react-native-ui-stepper). The library included a very rigid API and lacked any quality control. Now, you have all of the control over what's being rendered, backed by a comprehensive test suite to give you reassurance.
+
+### Thank You
+
+Thank you to the following services for having a free tier for open source projects 👏
+
+- Travis CI
+- CodeCov
 
 ### Usage
 
