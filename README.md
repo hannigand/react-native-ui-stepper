@@ -6,7 +6,7 @@
 
 <hr />
 
-[![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://github.com/hannigand/react-native-ui-stepper/graphs/commit-activity) [![npm version](https://img.shields.io/npm/v/react-native-ui-stepper.svg)](https://www.npmjs.com/package/react-native-ui-stepper) [![npm version](https://img.shields.io/npm/dt/react-native-ui-stepper.svg)](https://img.shields.io/npm/dt/react-native-ui-stepper.svg)
+[![Build Status](https://travis-ci.org/hannigand/react-native-ui-stepper.svg?branch=master)](https://travis-ci.org/hannigand/react-native-ui-stepper) [![codecov](https://codecov.io/gh/hannigand/react-native-ui-stepper/branch/master/graph/badge.svg)](https://codecov.io/gh/hannigand/react-native-ui-stepper) [![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://github.com/hannigand/react-native-ui-stepper/graphs/commit-activity) [![npm version](https://img.shields.io/npm/v/react-native-ui-stepper.svg)](https://www.npmjs.com/package/react-native-ui-stepper) [![npm version](https://img.shields.io/npm/dt/react-native-ui-stepper.svg)](https://img.shields.io/npm/dt/react-native-ui-stepper.svg)
 
 Welcome to a completely new re-write of the [react-native-ui-stepper](https://github.com/hannigand/react-native-ui-stepper) library. This version is **NOT** backwards capatiable, but it's more flexible and stable than the previous.
 
