@@ -1,11 +1,7 @@
 {
   "name": "react-native-ui-stepper",
-  "version": "1.2.4",
+  "version": "2.0.0",
   "description": "A react-native implementation of the iOS UIStepper",
-  "main": "UIStepper.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/hannigand/react-native-ui-stepper.git"
@@ -25,8 +21,5 @@
   "bugs": {
     "url": "https://github.com/hannigand/react-native-ui-stepper/issues"
   },
-  "homepage": "https://github.com/hannigand/react-native-ui-stepper#readme",
-  "dependencies": {
-    "prop-types": "^15.5.10"
-  }
+  "homepage": "https://github.com/hannigand/react-native-ui-stepper#readme"
 }
