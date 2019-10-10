@@ -13,19 +13,20 @@ A react-native component which mirrors the functionality of [UIStepper](https://
 ```javascript
 import Stepper from 'react-native-ui-stepper';
 
-renderItem = ({ count, increment, decrement }) => {
-  return (
+const MyCounter = () => {
+  const renderItem = ({ count, increment, decrement }) => (
     <View>
       <Button title="Increment" onPress={increment}>
       <Text>{count}</Text>
       <Button title="Decrement" onPress={decrement}>
     </View>
   )
-}
-render() {
-  <Stepper
-    renderItem={this.renderItem}
-  />
+
+  return (
+    <Stepper
+      renderItem={this.renderItem}
+    />
+  )
 }
 ```
 
